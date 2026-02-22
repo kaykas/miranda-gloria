@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react'
 
 const SLIDES = [
-  '/photos/miranda-selfie.jpg',
+  '/photos/miranda-4.jpg',
   '/photos/together-1.jpg',
-  '/photos/gloria-outfit.jpg',
+  '/photos/miranda-5.jpg',
 ]
 
 export default function Home() {

@@ -111,11 +111,11 @@ h1, h2, h3, h4 {
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   opacity: 0;
   transform: scale(1.05);
   transition: opacity 2s ease-in-out, transform 8s ease-out;
-  filter: grayscale(40%) contrast(110%) brightness(60%);
+  filter: grayscale(30%) contrast(110%) brightness(75%);
 }
 
 .slide.active {
@@ -142,9 +142,9 @@ h1, h2, h3, h4 {
   height: 100%;
   background: linear-gradient(
     to bottom,
-    rgba(13, 11, 9, 0.3) 0%,
-    rgba(13, 11, 9, 0) 50%,
-    rgba(13, 11, 9, 0.8) 100%
+    rgba(13, 11, 9, 0.5) 0%,
+    rgba(13, 11, 9, 0.3) 40%,
+    rgba(13, 11, 9, 0.7) 100%
   );
   z-index: 1;
   pointer-events: none;
@@ -154,26 +154,28 @@ h1, h2, h3, h4 {
   position: relative;
   z-index: 2;
   text-align: center;
-  mix-blend-mode: overlay;
 }
 
 .hero-title {
   font-family: var(--font-display);
   font-weight: 300;
   font-size: clamp(4rem, 10vw, 12rem);
-  line-height: 0.8;
-  letter-spacing: -0.04em;
-  color: var(--text-color);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  color: #f5efe6;
   text-transform: uppercase;
+  text-shadow: 0 2px 40px rgba(0, 0, 0, 0.6);
 }
 
 .hero-sub {
   margin-top: var(--space-s);
   font-family: var(--font-body);
   text-transform: uppercase;
-  letter-spacing: 0.3em;
-  font-size: 0.875rem;
-  opacity: 0.9;
+  letter-spacing: 0.25em;
+  font-size: 0.75rem;
+  color: #f5efe6;
+  opacity: 0.85;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* ── Bio Sections ─────────────────────────────────────────── */
