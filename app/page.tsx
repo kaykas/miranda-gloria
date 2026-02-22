@@ -1,27 +1,54 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const SLIDES = [
   '/photos/miranda-selfie.jpg',
   '/photos/together-1.jpg',
   '/photos/gloria-outfit.jpg',
-  '/photos/miranda-park.jpg',
-  '/photos/together-2.jpg',
-  '/photos/miranda-restaurant.jpg',
 ]
 
 export default function Home() {
+  const [loaded, setLoaded] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
   const [formData, setFormData] = useState({ name: '', brand: '', email: '', type: '', message: '' })
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const revealRefs = useRef<(HTMLElement | null)[]>([])
 
+  // Hide loader after 1.5s + fade duration
+  useEffect(() => {
+    const t = setTimeout(() => setLoaded(true), 2600)
+    return () => clearTimeout(t)
+  }, [])
+
+  // Slide rotation every 4s
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide(prev => (prev + 1) % SLIDES.length)
-    }, 5000)
+    }, 4000)
     return () => clearInterval(timer)
   }, [])
+
+  // IntersectionObserver scroll reveals
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            ;(entry.target as HTMLElement).style.opacity = '1'
+            ;(entry.target as HTMLElement).style.transform = 'translateY(0)'
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+    revealRefs.current.forEach(el => el && observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
+
+  const addRevealRef = (el: HTMLElement | null, i: number) => {
+    revealRefs.current[i] = el
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -40,106 +67,116 @@ export default function Home() {
 
   return (
     <>
-      <nav>
-        <div className="logo-mark">M &amp; G</div>
-        <div className="availability">
-          <div className="status-dot" />
-          Booking 2026
-        </div>
-      </nav>
+      {/* Loader */}
+      <div className={`loader${loaded ? ' loaded' : ''}`}>
+        <div className="loader-text">M &amp; G</div>
+      </div>
 
-      <header>
-        <div className="slide-container">
-          <div className="overlay-grade" />
-          {SLIDES.map((src, i) => (
-            <div
-              key={src}
-              className={`slide${i === currentSlide ? ' active' : ''}`}
-              style={{ backgroundImage: `url('${src}')` }}
-            />
-          ))}
-        </div>
-        <div className="hero-title-wrapper">
-          <h1 className="display-text">
-            <span>MIRANDA</span>
-            <span className="ampersand">&amp;</span>
-            <span>GLORIA</span>
-          </h1>
-        </div>
-      </header>
+      {/* Hero */}
+      <section className="hero-container">
+        <h1 className="masthead">M &amp; G</h1>
+        <div className="issue-date">Sponsorship Kit / 2026</div>
 
-      <section id="miranda">
-        <div className="bio-layout">
-          <div className="bio-image-frame">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/photos/miranda-stairs.jpg" alt="Miranda" className="bio-image" />
-          </div>
-          <div className="bio-content">
-            <span className="label">The Bear</span>
-            <h2 className="section-title">Miranda</h2>
-            <p>At 160 pounds, Miranda is the kind of presence that stops strangers mid-sentence. A chocolate Newfoundland with the soul of a sunbathing seal, she has never met a human she didn&apos;t instantly win over — or a lap she couldn&apos;t somehow squeeze into. Calm, magnetic, and completely at home in the spotlight.</p>
-            <div className="stats-grid">
-              <div className="stat-item"><span>Breed</span><h4>Newfoundland</h4></div>
-              <div className="stat-item"><span>Coat</span><h4>Chocolate Matte</h4></div>
-              <div className="stat-item"><span>Weight</span><h4>160 lbs</h4></div>
-              <div className="stat-item"><span>Vibe</span><h4>Chill</h4></div>
-            </div>
-          </div>
+        {SLIDES.map((src, i) => (
+          <div
+            key={src}
+            className={`slide${i === currentSlide ? ' active' : ''}`}
+            style={{ backgroundImage: `url('${src}')` }}
+          />
+        ))}
+
+        <div className="hero-overlay">
+          <span className="subtitle">Bay Area, California</span>
+          <h2 className="editorial-heading hero-sub-heading">
+            The Power<br />of Next
+          </h2>
+          <p className="hero-tag">Representation by Miranda &amp; Gloria</p>
         </div>
       </section>
 
-      <section id="gloria">
-        <div className="bio-layout">
-          <div className="bio-content right">
-            <span className="label">The Boss</span>
-            <h2 className="section-title">Gloria</h2>
-            <p>Gloria weighs 20 pounds and runs everything. A Pekingese with an agenda, she moves through the world with boundless energy and a complete disregard for the concept of sitting still. She doesn&apos;t share the frame — she owns it.</p>
-            <div className="stats-grid">
-              <div className="stat-item"><span>Breed</span><h4>Pekingese</h4></div>
-              <div className="stat-item"><span>Coat</span><h4>Golden Silk</h4></div>
-              <div className="stat-item"><span>Weight</span><h4>20 lbs</h4></div>
-              <div className="stat-item"><span>Vibe</span><h4>The Boss</h4></div>
-            </div>
-          </div>
-          <div className="bio-image-frame">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/photos/gloria-outfit.jpg" alt="Gloria" className="bio-image" />
-          </div>
+      {/* Miranda */}
+      <section
+        className="bio-section"
+        id="miranda"
+        ref={el => addRevealRef(el as HTMLElement | null, 0)}
+        style={{ opacity: 0, transform: 'translateY(30px)', transition: 'opacity 0.8s ease, transform 0.8s ease' }}
+      >
+        <span className="subtitle">01 / The Anchor</span>
+        <div className="portrait-frame">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/photos/miranda-stairs.jpg" alt="Miranda the Newfoundland" className="portrait-img" />
+        </div>
+        <div className="bio-content">
+          <h2 className="section-title gold">Miranda</h2>
+          <p>Commanding presence. She holds the frame. Her scale is the spectacle. A Newfoundland of uncompromising dignity, Miranda brings a gravity to campaigns that lighter breeds simply cannot emulate.</p>
+          <div className="quote">&ldquo;She doesn&apos;t pose. She exists, and the camera obeys.&rdquo;</div>
         </div>
       </section>
 
-      <section className="pitch-section">
+      {/* Gloria */}
+      <section
+        className="bio-section"
+        id="gloria"
+        ref={el => addRevealRef(el as HTMLElement | null, 1)}
+        style={{ opacity: 0, transform: 'translateY(30px)', transition: 'opacity 0.8s ease, transform 0.8s ease' }}
+      >
+        <span className="subtitle right-align">02 / The Foil</span>
+        <div className="portrait-frame">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/photos/gloria-outfit.jpg" alt="Gloria the Pekingese" className="portrait-img" />
+        </div>
+        <div className="bio-content">
+          <h2 className="section-title gold right-align">Gloria</h2>
+          <p className="right-align">Pocket-sized drama. She has opinions. The golden Pekingese who provides the chaotic energy to Miranda&apos;s calm. Gloria delivers the spark, the side-eye, and the viral moment.</p>
+          <div className="quote right-align">&ldquo;Small scale. Massive narrative.&rdquo;</div>
+        </div>
+      </section>
+
+      {/* Pitch */}
+      <section
+        className="pitch-section"
+        ref={el => addRevealRef(el as HTMLElement | null, 2)}
+        style={{ opacity: 0, transform: 'translateY(30px)', transition: 'opacity 0.8s ease, transform 0.8s ease' }}
+      >
+        <div className="deco-line" />
         <p className="pitch-text">
-          &ldquo;We create content that moves. Our audience is real, our reach is earned, and our aesthetic is{' '}
-          <span>non-negotiable</span>. If your brand belongs in this frame, let&apos;s talk.&rdquo;
+          We create content that <span className="highlight">moves</span>. Our audience is real, our reach is earned, and our aesthetic is non-negotiable.
+        </p>
+        <br />
+        <p className="pitch-text" style={{ fontSize: '1.5rem' }}>
+          If your brand belongs in this frame, let&apos;s talk.
         </p>
       </section>
 
-      <section className="inquiry-section" id="inquiry">
-        <div className="form-header">
-          <span className="label">Representation</span>
-          <h2 className="section-title">Brand Inquiries</h2>
-        </div>
+      {/* Form */}
+      <section
+        className="form-section"
+        id="inquiry"
+        ref={el => addRevealRef(el as HTMLElement | null, 3)}
+        style={{ opacity: 0, transform: 'translateY(30px)', transition: 'opacity 0.8s ease, transform 0.8s ease' }}
+      >
+        <span className="subtitle">03 / Booking</span>
+        <h2 className="section-title">Inquire</h2>
 
         {status === 'sent' ? (
-          <div style={{ textAlign: 'center', padding: '4rem 0' }}>
-            <p style={{ fontFamily: 'var(--font-display)', fontSize: '2.5rem', fontStyle: 'italic' }}>Thank you.</p>
-            <p style={{ marginTop: '1rem', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>We&apos;ll be in touch soon.</p>
+          <div className="sent-state">
+            <p className="sent-heading">Thank you.</p>
+            <p className="sent-sub">We&apos;ll be in touch soon.</p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit}>
+          <form className="booking-form" onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="name">Your Name</label>
+              <label htmlFor="name">Name</label>
               <input
-                type="text" id="name" required
+                type="text" id="name" className="form-control" required
                 value={formData.name}
                 onChange={e => setFormData({ ...formData, name: e.target.value })}
               />
             </div>
             <div className="form-group">
-              <label htmlFor="email">Email Address</label>
+              <label htmlFor="email">Email</label>
               <input
-                type="email" id="email" required
+                type="email" id="email" className="form-control" required
                 value={formData.email}
                 onChange={e => setFormData({ ...formData, email: e.target.value })}
               />
@@ -147,19 +184,19 @@ export default function Home() {
             <div className="form-group">
               <label htmlFor="brand">Brand / Company</label>
               <input
-                type="text" id="brand"
+                type="text" id="brand" className="form-control"
                 value={formData.brand}
                 onChange={e => setFormData({ ...formData, brand: e.target.value })}
               />
             </div>
-            <div className="form-group select-wrapper">
-              <label htmlFor="type">Engagement Type</label>
+            <div className="form-group">
+              <label htmlFor="type">Campaign Type</label>
               <select
-                id="type"
+                id="type" className="form-control"
                 value={formData.type}
                 onChange={e => setFormData({ ...formData, type: e.target.value })}
               >
-                <option value="" disabled>Select Engagement Type</option>
+                <option value="" disabled>Select Engagement</option>
                 <option value="Product Feature">Product Feature</option>
                 <option value="Event Appearance">Event Appearance</option>
                 <option value="Long-Term Partnership">Long-Term Partnership</option>
@@ -169,18 +206,16 @@ export default function Home() {
             </div>
             <div className="form-group">
               <label htmlFor="message">Brief</label>
-              <textarea
-                id="message" rows={4} required
+              <input
+                type="text" id="message" className="form-control" required
                 value={formData.message}
                 onChange={e => setFormData({ ...formData, message: e.target.value })}
               />
             </div>
             {status === 'error' && (
-              <p style={{ color: '#e05252', marginBottom: '1.5rem', textAlign: 'center', fontSize: '0.85rem' }}>
-                Something went wrong. Please try again.
-              </p>
+              <p className="form-error">Something went wrong. Please try again.</p>
             )}
-            <button type="submit" disabled={status === 'sending'}>
+            <button type="submit" className="submit-btn" disabled={status === 'sending'}>
               {status === 'sending' ? 'Sending...' : 'Send Inquiry'}
             </button>
           </form>
@@ -188,9 +223,12 @@ export default function Home() {
       </section>
 
       <footer>
-        <p>Miranda &amp; Gloria. Bay Area, California.</p>
-        <p>For inquiries: <a href="mailto:info@deareleanore.com" className="email-link">info@deareleanore.com</a></p>
-        <p style={{ marginTop: '2rem', fontSize: '0.6rem', opacity: 0.5 }}>© 2026. All Rights Reserved.</p>
+        <div className="footer-logo">MIRANDA &amp; GLORIA</div>
+        <div className="footer-info">
+          Bay Area, California<br />
+          Representation: Direct Only
+        </div>
+        <a href="mailto:info@deareleanore.com" className="email-link">info@deareleanore.com</a>
       </footer>
     </>
   )
