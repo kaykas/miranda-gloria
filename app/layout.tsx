@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from 'next'
-import { Playfair_Display, Inter } from 'next/font/google'
+import { Cormorant_Garamond, Inter } from 'next/font/google'
 import './globals.css'
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  variable: '--font-playfair',
+  variable: '--font-cormorant',
+  weight: ['300', '400', '600'],
+  style: ['normal', 'italic'],
   display: 'swap',
 })
 
@@ -21,7 +23,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Miranda & Gloria · Bay Area, CA',
+  title: 'Miranda & Gloria | Talent Management',
   description: 'Miranda (Newfoundland) and Gloria (Pekingese) — Bay Area pet influencers. Sponsorships and brand partnerships.',
   openGraph: {
     title: 'Miranda & Gloria',
@@ -36,8 +38,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="bg-chocolate font-inter">{children}</body>
+    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
+      <body>{children}</body>
     </html>
   )
 }
