@@ -50,7 +50,7 @@ export default function Home() {
         </div>
         <div className="hero-content">
           <h1 className="hero-title">MIRANDA<br />&amp; GLORIA</h1>
-          <div className="hero-sub">The Talent / Bay Area</div>
+          <div className="hero-sub">Bay Area, California &nbsp;·&nbsp; Talent Representation 2026</div>
         </div>
       </section>
 
@@ -63,15 +63,15 @@ export default function Home() {
         <div className="bio-content">
           <span className="meta-label">01 — The Anchor</span>
           <h2 className="display-text">Miranda</h2>
-          <h3 className="section-header">Commanding Presence</h3>
+          <h3 className="section-header">160 pounds of inevitability</h3>
           <p className="body-large">
-            She holds the frame. In a world of fleeting trends, Miranda provides gravitational pull. Her scale is the spectacle, her stillness the narrative. A Newfoundland of impeccable lineage, she brings architectural weight to every campaign.
+            Miranda doesn&apos;t enter a room. She resolves it. At 160 pounds, she is the kind of physical fact that reorganizes everything around her — the framing, the light, the attention of everyone in it. A chocolate Newfoundland with a coat the color of aged espresso, she has the rare quality that every brand wants and almost none can manufacture: she doesn&apos;t need to try. The camera finds her. Strangers stop mid-sentence. Campaigns built around her stillness outperform everything louder.
           </p>
           <div className="stat-grid">
             <div className="stat-item"><h4>Breed</h4><p>Newfoundland</p></div>
-            <div className="stat-item"><h4>Coat</h4><p>Deep Espresso</p></div>
-            <div className="stat-item"><h4>Temperament</h4><p>Stoic</p></div>
-            <div className="stat-item"><h4>Specialty</h4><p>High Concept</p></div>
+            <div className="stat-item"><h4>Coat</h4><p>Chocolate</p></div>
+            <div className="stat-item"><h4>Weight</h4><p>160 lbs</p></div>
+            <div className="stat-item"><h4>Presence</h4><p>Inevitable</p></div>
           </div>
         </div>
       </section>
@@ -81,15 +81,15 @@ export default function Home() {
         <div className="bio-content gloria-content">
           <span className="meta-label">02 — The Foil</span>
           <h2 className="display-text">Gloria</h2>
-          <h3 className="section-header">Pocket-Sized Drama</h3>
+          <h3 className="section-header">Twenty pounds of pure opinion</h3>
           <p className="body-large">
-            She has opinions. Gloria is the punctuation mark at the end of the sentence. A Golden Pekingese with a gaze that disarms, she offers the perfect counter-balance. Where Miranda is the mountain, Gloria is the lightning strike.
+            Gloria is descended from dogs that lived inside imperial palaces, and she has not forgotten this. A golden Pekingese bred for the courts of the Chinese emperors — a breed so prized they were carried in the sleeves of the royal family — she moves through the world with the serene confidence of someone who has never once doubted their relevance. She is Miranda&apos;s counterweight and the reason people stay on the page: the side-eye, the tilt, the moment that gets screenshotted. Where Miranda is the statement, Gloria is the punchline that makes it land.
           </p>
           <div className="stat-grid">
             <div className="stat-item"><h4>Breed</h4><p>Pekingese</p></div>
-            <div className="stat-item"><h4>Coat</h4><p>Golden Wheat</p></div>
-            <div className="stat-item"><h4>Temperament</h4><p>Diva</p></div>
-            <div className="stat-item"><h4>Specialty</h4><p>Editorial Focus</p></div>
+            <div className="stat-item"><h4>Coat</h4><p>Imperial Gold</p></div>
+            <div className="stat-item"><h4>Weight</h4><p>20 lbs</p></div>
+            <div className="stat-item"><h4>Presence</h4><p>Undeniable</p></div>
           </div>
         </div>
         <div className="bio-image-wrapper">
@@ -102,8 +102,10 @@ export default function Home() {
       <section className="pitch-section">
         <div className="container">
           <p className="pitch-copy">
-            &ldquo;We create content that moves. Our audience is real, our reach is earned, and our aesthetic is{' '}
-            <span>non-negotiable</span>. If your brand belongs in this frame, let&apos;s talk.&rdquo;
+            The best brand content doesn&apos;t sell a product —
+            it makes you feel something about the <span>life around it</span>.
+            Miranda and Gloria are that life. Real animals, real audience, real affection.
+            No filters required.
           </p>
         </div>
       </section>
@@ -112,10 +114,9 @@ export default function Home() {
       <section className="container inquiry-section">
         <div className="form-header">
           <span className="meta-label">Representation</span>
-          <h2 className="section-header">Inquiry &amp;<br />Booking</h2>
+          <h2 className="section-header">Work<br />With Us</h2>
           <p className="body-large">
-            Accepting select partnerships for 2026.<br />
-            Please provide detailed campaign briefs.
+            We take a small number of brand partnerships each year. If you&apos;re building something that belongs in their world, tell us about it. We&apos;ll take it from there.
           </p>
         </div>
 
