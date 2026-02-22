@@ -5,6 +5,8 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* iOS Safari: prevent bounce affecting parallax */
+    -webkit-overflow-scrolling: touch;
   }
   body {
     font-family: var(--font-inter);
@@ -12,11 +14,18 @@
     color: #FAF6F0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Full bleed to screen edges on notched devices */
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
   }
 }
 
 @layer utilities {
   .font-playfair {
     font-family: var(--font-playfair);
+  }
+  /* Safe bottom spacing for sticky CTA */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }

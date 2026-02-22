@@ -25,14 +25,21 @@ export default function Home() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
   const [currentSlide, setCurrentSlide] = useState(0)
   const [scrollY, setScrollY] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set())
 
-  // Parallax scroll tracking
+  // Detect mobile (disables parallax — iOS Safari clips transformed overflow:hidden elements incorrectly)
   useEffect(() => {
+    setIsMobile(window.innerWidth < 768 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
+  }, [])
+
+  // Parallax scroll tracking (desktop only)
+  useEffect(() => {
+    if (isMobile) return
     const handleScroll = () => setScrollY(window.scrollY)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [isMobile])
 
   // Hero slideshow auto-advance
   useEffect(() => {
@@ -80,7 +87,7 @@ export default function Home() {
     <main className="bg-chocolate text-cream min-h-screen overflow-x-hidden">
 
       {/* ── STICKY MOBILE CTA ── */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden">
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
         <a
           href="#contact"
           className="block w-full bg-gold text-chocolate text-center font-inter text-xs tracking-[0.35em] uppercase font-semibold py-4"
@@ -90,10 +97,14 @@ export default function Home() {
       </div>
 
       {/* ── HERO with parallax slideshow ── */}
-      <section className="relative h-screen min-h-[700px] flex items-end overflow-hidden">
+      {/* h-screen = 100vh fallback; 100svh overrides on supporting browsers (accounts for iOS browser chrome) */}
+      <section
+        className="relative h-screen flex items-end overflow-hidden"
+        style={{ height: '100svh', minHeight: isMobile ? '600px' : '700px' }}
+      >
         <div
-          className="absolute will-change-transform"
-          style={{
+          className={isMobile ? 'absolute inset-0' : 'absolute will-change-transform'}
+          style={isMobile ? {} : {
             top: '-10%',
             left: 0,
             right: 0,
