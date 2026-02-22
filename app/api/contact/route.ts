@@ -11,8 +11,8 @@ export async function POST(req: NextRequest) {
     }
 
     const result = await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: 'jascha@kaykas.com',
+      from: 'Miranda & Gloria <bookings@boothbeacon.org>',
+      to: 'info@deareleanore.com',
       replyTo: email,
       subject: `New Sponsorship Inquiry — ${brand || name}`,
       html: `
