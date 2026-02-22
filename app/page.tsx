@@ -75,14 +75,14 @@ export default function Home() {
             <img src="/photos/miranda-stairs.jpg" alt="Miranda" className="bio-image" />
           </div>
           <div className="bio-content">
-            <span className="label">The Anchor</span>
+            <span className="label">The Bear</span>
             <h2 className="section-title">Miranda</h2>
-            <p>She holds the frame. In a world of fleeting trends, Miranda provides the gravity. Her scale is the spectacle. A Newfoundland of uncompromising presence, she doesn&apos;t ask for attention—she absorbs it.</p>
+            <p>At 160 pounds, Miranda is the kind of presence that stops strangers mid-sentence. A chocolate Newfoundland with the soul of a sunbathing seal, she has never met a human she didn&apos;t instantly win over — or a lap she couldn&apos;t somehow squeeze into. Calm, magnetic, and completely at home in the spotlight.</p>
             <div className="stats-grid">
               <div className="stat-item"><span>Breed</span><h4>Newfoundland</h4></div>
               <div className="stat-item"><span>Coat</span><h4>Chocolate Matte</h4></div>
-              <div className="stat-item"><span>Weight</span><h4>140 lbs</h4></div>
-              <div className="stat-item"><span>Vibe</span><h4>Commanding</h4></div>
+              <div className="stat-item"><span>Weight</span><h4>160 lbs</h4></div>
+              <div className="stat-item"><span>Vibe</span><h4>Chill</h4></div>
             </div>
           </div>
         </div>
@@ -91,14 +91,14 @@ export default function Home() {
       <section id="gloria">
         <div className="bio-layout">
           <div className="bio-content right">
-            <span className="label">The Foil</span>
+            <span className="label">The Boss</span>
             <h2 className="section-title">Gloria</h2>
-            <p>Pocket-sized drama. She is the chaotic energy that defines the scene. Where Miranda is the shadow, Gloria is the spark. A Pekingese with opinions, she offers the necessary tension to any visual composition.</p>
+            <p>Gloria weighs 20 pounds and runs everything. A Pekingese with an agenda, she moves through the world with boundless energy and a complete disregard for the concept of sitting still. She doesn&apos;t share the frame — she owns it.</p>
             <div className="stats-grid">
               <div className="stat-item"><span>Breed</span><h4>Pekingese</h4></div>
               <div className="stat-item"><span>Coat</span><h4>Golden Silk</h4></div>
-              <div className="stat-item"><span>Weight</span><h4>9 lbs</h4></div>
-              <div className="stat-item"><span>Vibe</span><h4>Opinionated</h4></div>
+              <div className="stat-item"><span>Weight</span><h4>20 lbs</h4></div>
+              <div className="stat-item"><span>Vibe</span><h4>The Boss</h4></div>
             </div>
           </div>
           <div className="bio-image-frame">

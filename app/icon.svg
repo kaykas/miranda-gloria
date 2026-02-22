@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" fill="#0d0b09"/>
+  <!-- Paw pad -->
+  <ellipse cx="16" cy="19" rx="6.5" ry="5.5" fill="#c9973a"/>
+  <!-- Four toe beans -->
+  <ellipse cx="9.5" cy="13" rx="2.5" ry="2.8" fill="#c9973a"/>
+  <ellipse cx="13.5" cy="10.5" rx="2.5" ry="2.8" fill="#c9973a"/>
+  <ellipse cx="18.5" cy="10.5" rx="2.5" ry="2.8" fill="#c9973a"/>
+  <ellipse cx="22.5" cy="13" rx="2.5" ry="2.8" fill="#c9973a"/>
+</svg>
