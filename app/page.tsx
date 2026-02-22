@@ -4,10 +4,10 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 
 const ALL_PHOTOS = [
-  { src: '/photos/gloria-outfit.jpg', alt: 'Gloria in her signature look' },
+  { src: '/photos/miranda-selfie.jpg', alt: 'Miranda' },
   { src: '/photos/miranda-1.jpg', alt: 'Miranda' },
   { src: '/photos/together-1.jpg', alt: 'Miranda and Gloria' },
-  { src: '/photos/miranda-selfie.jpg', alt: 'Miranda' },
+  { src: '/photos/gloria-outfit.jpg', alt: 'Gloria in her signature look' },
   { src: '/photos/gloria-1.jpg', alt: 'Gloria' },
   { src: '/photos/together-2.jpg', alt: 'Miranda and Gloria together' },
   { src: '/photos/miranda-park.jpg', alt: 'Miranda at the park' },

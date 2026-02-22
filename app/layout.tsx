@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Miranda & Gloria',
     description: 'Bay Area pet influencers. Sponsorships & brand partnerships.',
-    images: ['/photos/gloria-outfit.jpg'],
+    images: ['/photos/miranda-selfie.jpg'],
   },
 }
 
