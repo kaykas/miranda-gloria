@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 
 const SLIDES = [
   '/photos/miranda-4.jpg',
-  '/photos/together-1.jpg',
+  '/photos/together-4.jpg',
   '/photos/miranda-5.jpg',
 ]
 
@@ -58,7 +58,7 @@ export default function Home() {
       <section className="bio-section grid-split">
         <div className="bio-image-wrapper">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/photos/miranda-stairs.jpg" alt="Miranda the Newfoundland" className="bio-image" />
+          <img src="/photos/miranda-3.jpg" alt="Miranda the Newfoundland" className="bio-image" />
         </div>
         <div className="bio-content">
           <span className="meta-label">01 — The Anchor</span>
