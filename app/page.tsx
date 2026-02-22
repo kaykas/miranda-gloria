@@ -70,7 +70,7 @@ export default function Home() {
         ))}
         <div className="hero-overlay">
           <h1 className="hero-title">M &amp; G</h1>
-          <span className="label">Editorial Talent Kit</span>
+          <span className="label">Bay Area &nbsp;·&nbsp; 2026</span>
         </div>
       </section>
 
@@ -128,23 +128,26 @@ export default function Home() {
       {/* Sponsorship */}
       <section className="sponsorship-section">
         <div className="sponsor-content">
-          <span className="label">Collaborations</span>
-          <h2 className="name-heading">Brand Sponsorships</h2>
+          <span className="label">A Word About Brand Work</span>
+          <h2 className="name-heading">We&apos;re selective.</h2>
           <p className="body-copy" style={{ margin: '0 auto' }}>
-            Our reach is earned and our aesthetic is non-negotiable. We partner with brands that value editorial precision and authentic storytelling. A small number of partnerships accepted each year.
+            Miranda and Gloria don&apos;t perform on command. What you get from them is real — which is exactly why it works. We partner with brands that understand the difference between content that gets scrolled past and content that gets saved. If you&apos;re building something that belongs in their world, we want to hear about it.
           </p>
         </div>
       </section>
 
       {/* Inquiry form */}
       <section className="inquiry-section" id="inquiry">
-        <span className="label">03 / Booking</span>
-        <h2 className="name-heading">Inquire</h2>
+        <span className="label">03 / Get In Touch</span>
+        <h2 className="name-heading">Pitch us.</h2>
+        <p className="body-copy" style={{ marginBottom: '2.5rem' }}>
+          We read every submission. We respond to the ones that fit.
+        </p>
 
         {status === 'sent' ? (
           <div className="sent-state">
-            <p className="sent-heading">Thank you.</p>
-            <p className="sent-sub">We&apos;ll be in touch soon.</p>
+            <p className="sent-heading">Got it.</p>
+            <p className="sent-sub">If it&apos;s a fit, we&apos;ll be in touch.</p>
           </div>
         ) : (
           <form className="booking-form" onSubmit={handleSubmit}>
@@ -176,7 +179,7 @@ export default function Home() {
               </select>
             </div>
             <div className="form-group">
-              <label className="form-label">Brief</label>
+              <label className="form-label">Tell us what you&apos;re building</label>
               <textarea className="form-input" rows={4} required
                 value={formData.message} onChange={e => setFormData({ ...formData, message: e.target.value })} />
             </div>
@@ -197,7 +200,7 @@ export default function Home() {
       <div className="sticky-bar">
         <div>
           <div className="sticky-name">Miranda &amp; Gloria</div>
-          <div className="sticky-sub">2026 Bookings Open</div>
+          <div className="sticky-sub">Taking select partnerships for 2026</div>
         </div>
         <a href="#inquiry" className="cta-btn">Inquire</a>
       </div>
